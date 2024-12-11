@@ -5,6 +5,8 @@ import SignUp from "./pages/signup/SignUp"
 import Login from "./pages/login/Login"
 
 
+
+
 const App = () => {
   return (
      <BrowserRouter>
@@ -12,9 +14,7 @@ const App = () => {
       <Route path="/" element={<Home/>}/>
       <Route path="/register" element={<SignUp/>}/>
       <Route path="/login" element={<Login/>}/>
-
      </Routes>
-     
      </BrowserRouter>
   )
 }

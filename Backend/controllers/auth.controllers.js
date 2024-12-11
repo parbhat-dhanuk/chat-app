@@ -7,13 +7,13 @@ export const signup=async(req,res)=>{
        const {fullName,username,password,confirmPassword,gender}=req.body 
 
        if(password!==confirmPassword){
-        return res.status(400).json({error:"password don't match"})
+        return res.status(400).json({message:"**password and confirm password don't match**"})
        }
 
        const user=await User.findOne({username})
 
        if(user){
-        return res.status(400).json({error:"Username already exists"})
+        return res.status(400).json({message:"**Username already exists**"})
        }
 
        //Hash password 
@@ -50,12 +50,15 @@ export const login=async(req,res)=>{
         
         const user=await User.findOne({username})
 
-        const isPasswordMatch=await bcrypt.compare(password,user?.password)
-
-        if(!user||!isPasswordMatch){
-            return res.status(400).json({error:"Invalid username or Password"})
+        if(!user){
+            return res.status(400).json({message:"**Invalid username**"})
         }
       
+        const isPasswordMatch=await bcrypt.compare(password,user?.password)
+        if(!isPasswordMatch){
+            return res.status(400).json({error:"**Invalid password**"})
+        }
+
         const token=await jwt.sign({userId:user._id},process.env.JWT_SECRET,{expiresIn:"1d"})
 
         return res.status(200).cookie('token',token,{httpOnly:true,sameSite:"strict",maxAge:1 * 24 * 60 * 60 * 1000}).json({
