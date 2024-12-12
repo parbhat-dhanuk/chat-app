@@ -3,6 +3,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Home from "./pages/home/Home"
 import SignUp from "./pages/signup/SignUp"
 import Login from "./pages/login/Login"
+import Chat from "./components/Chat"
+import ChatBoard from "./components/ChatBoard"
 
 
 
@@ -14,6 +16,8 @@ const App = () => {
       <Route path="/" element={<Home/>}/>
       <Route path="/register" element={<SignUp/>}/>
       <Route path="/login" element={<Login/>}/>
+      <Route path="/chat" element={<Chat/>}/>
+    
      </Routes>
      </BrowserRouter>
   )

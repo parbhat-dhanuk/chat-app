@@ -40,7 +40,7 @@ if(status===STATUS.success){
   toast.success('Login Successfully.')
 
   setTimeout(()=>{
-    navigate('/')
+    navigate('/chat')
   },1000)
   
 }
