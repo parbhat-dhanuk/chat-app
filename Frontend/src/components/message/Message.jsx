@@ -7,7 +7,7 @@ const Message = () => {
 		<div >
 			<div className='chat-image avatar'>
 				<div className='w-10 rounded-full'>
-					<img alt='Tailwind CSS chat bubble component'  />
+					<img src="https://cdn.vectorstock.com/i/500p/11/69/blank-avatar-profile-picture-vector-45161169.jpg" alt='Tailwind CSS chat bubble component'  />
 				</div>
 			</div>
 			<div className="chat-bubble text-white pb-2">message</div>

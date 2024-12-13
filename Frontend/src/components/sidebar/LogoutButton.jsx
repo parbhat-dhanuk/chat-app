@@ -1,17 +1,25 @@
-import { BiLogOut } from "react-icons/bi";
-import useLogout from "../../hooks/useLogout";
+import { useState } from 'react'
+import { GrLogout } from 'react-icons/gr'
+import { useNavigate } from 'react-router-dom'
+import API from '../../https'
+
 
 const LogoutButton = () => {
-	
 
-	return (
-		<div className='mt-auto'>
-			
-				<BiLogOut className='w-6 h-6 text-white cursor-pointer'  />
-			
-				<span className='loading loading-spinner'></span>
-			
-		</div>
-	)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    try {
+      localStorage.removeItem('access-token')
+      await API.post('/logout',{}, { withCredentials: true })
+      setIsLoggedIn(false)
+      navigate('/')
+    } catch (error) {
+      console.error('Error logging out:', error)
+    }
+  }
+
+  return <GrLogout onClick={handleLogout} className="h-7 w-10" />
 }
-export default LogoutButton;
+export default LogoutButton

@@ -58,6 +58,7 @@ try {
  const response = await API.post('/login',data,{ withCredentials: true })
   if(response.status===200){
     dispatch(setStatus(STATUS.success))
+    localStorage.setItem("access-token",response.data.token)
   }
 } catch (error) {
   dispatch(setMessage((error.response.data.message)))
