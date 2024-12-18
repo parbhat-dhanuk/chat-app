@@ -6,8 +6,9 @@ import messageRouter from "./routes/message.route.js"
 import userRouter from "./routes/users.route.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
+import { app, server } from "./socket/socket.js"
 dotenv.config()
-const app=express()
+
 
 const PORT=process.env.PORT||8080
 app.use(express.json())  // to parse the json file
@@ -26,7 +27,7 @@ app.use('/',userRouter)
 
 
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     connectDB()
     console.log(`Server is running in port:${PORT}`)
 })

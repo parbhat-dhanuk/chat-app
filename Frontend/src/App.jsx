@@ -4,6 +4,7 @@ import Home from "./pages/home/Home"
 import SignUp from "./pages/signup/SignUp"
 import Login from "./pages/login/Login"
 import Chat from "./pages/chat/Chat"
+import SingleChat from "./pages/chat/Single"
 
 
 const App = () => {
@@ -14,6 +15,8 @@ const App = () => {
       <Route path="/register" element={<SignUp/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/chat" element={<Chat/>}/>
+      <Route path="/singlechat/:id" element={<SingleChat/>}/>
+      
      </Routes>
      </BrowserRouter>
   )
